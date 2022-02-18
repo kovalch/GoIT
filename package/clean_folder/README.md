@@ -1,0 +1,1 @@
+The command to clean up the repository 

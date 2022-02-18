@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: clean-my-folder
+Version: 0.0.1
+Summary: Cleanup wanted folder
+Home-page: https://github.com/kovalch/GoIT
+Author: Nataliia Kovalchuk
+Author-email: nataliia.kovalchuk90@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/kovalch/GoIT/issues
+Description: Cleanup wanted folder
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
