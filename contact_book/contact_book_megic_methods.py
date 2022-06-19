@@ -113,15 +113,41 @@ class Record:
             print("No birthday was given")
 
 
-
 class AddressBook(UserDict):
 
     def add_record(self, record: list):
         self.data[record.name.value] = record
 
+    def iterator(self, n):
+        self.n = n
+        print(f"There will be shown only first {n} records")
+        self.count = 0
+
+    def __next__(self):
+
+        dict_to_return = []
+        self.count += 1
+
+        for key, value in self.data.items():
+            dict_to_return.append((key, value))
+
+            if len(dict_to_return) == self.n:
+                break
+
+        if self.count == self.n+1:
+            raise StopIteration
+
+        return dict_to_return
+
+    def __iter__(self):
+        return self
+
+
+
 
 name = Name("Bill")
 name2 = Name("Niko")
+name3 = Name("Zen")
 
 phone = Phone("+380958478343")
 phone2 = Phone("+380945343256")
@@ -134,6 +160,7 @@ rec = Record(name, phone, birthday)
 print(rec.days_to_birthday())
 
 rec2 = Record(name2, phone2, birthday2)
+rec3 = Record(name3, phone3)
 
 rec.add_phone_number(phone2)
 rec.edit_phone_number(phone2,phone3)
@@ -145,4 +172,11 @@ print(rec.phone)
 ab = AddressBook()
 ab.add_record(rec)
 ab.add_record(rec2)
+ab.add_record(rec3)
 print(ab)
+
+ab_iterable = ab.iterator(2)
+
+for i in ab:
+    print(i)
+
