@@ -48,10 +48,11 @@ class Record:
 
     def edit_phone_number(self, phone_number, new_phone_number):
         phone_number_to_edit = self.find_phone_number(phone_number)
+        new_phone = Phone(new_phone_number)
         if phone_number_to_edit in self.phone:
             self.phone.remove(phone_number_to_edit)
-            self.phone.append(new_phone_number)
-            print(f"{phone_number_to_edit} number was changed to {new_phone_number}")
+            self.phone.append(new_phone)
+            print(f"{phone_number_to_edit} number was changed to {new_phone}")
 
 
 class AddressBook(UserDict):
