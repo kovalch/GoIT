@@ -28,9 +28,10 @@ class Record:
             print(f"and a phone number {self.phone}")
 
     def add_phone_number(self, phone_number):
-        if phone_number not in self.phone:
-            print(f"Adding new phone number: {phone_number}")
-            self.phone.append(phone_number)
+        new_phone = Phone(phone_number)
+        if new_phone not in self.phone:
+            print(f"Adding new phone number: {new_phone}")
+            self.phone.append(new_phone)
 
     def find_phone_number(self, phone_number):
         for i in self.phone:
