@@ -143,7 +143,30 @@ class AddressBook(UserDict):
     def __iter__(self):
         return self
 
+    def find_record(self, letter_case: str):
 
+        output_ab = []
+        articles_dict_with_key = []
+        count_match = 0
+
+        for tup in list(self.data.items()):
+            output_ab.append(dict([tup]))
+            ab_dict = dict([tup])
+
+            for key, value in ab_dict.items():
+                birthday_str = ""
+                if value.birthday:
+                    birthday_str = value.birthday.value.strftime("%d %B, %Y")
+
+                words_in_dict = [key.lower(), birthday_str.lower()]
+                for i in value.phone:
+                    words_in_dict.append(str(i))
+
+                if any(letter_case.lower() in s for s in words_in_dict):
+                    articles_dict_with_key.append(tup)
+                    count_match += 1
+        print(f"For the given letter case {count_match} matches were found in the phone book")
+        print(f"The matches are : {articles_dict_with_key}")
 
 
 name = Name("Bill")
@@ -175,13 +198,16 @@ ab.add_record(rec)
 ab.add_record(rec2)
 ab.add_record(rec3)
 print(ab)
-
 ab_iterable = ab.iterator(2)
-
 for i in ab:
     print(i)
 
-print(ab)
+print("****************************************")
+print("********** module 12 tasks *************")
+print("****************************************")
+
+#find a match
+print(ab.find_record("094"))
 
 #serializer
 with open('first_address_book.bin', 'wb') as file:
